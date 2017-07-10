@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { TplComponent } from './tpl/tpl.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import {UsersService} from './services/users.service';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TplComponent,
-    UserTableComponent
+    UserTableComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

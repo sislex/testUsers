@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UsersService} from '../services/users.service';
-
+import {UsersService, IUser, MUser} from '../services/users.service';
+declare const $: any;
 
 @Component({
   selector: 'app-user-table',
@@ -19,4 +19,21 @@ export class UserTableComponent implements OnInit {
   ngOnInit() {
   }
 
+  public addUser() {
+    const user: IUser = new MUser();
+    user.id = this.usersService.getNewId();
+    this.usersService.selectedUser = user;
+  }
+
+  public delete(user) {
+    this.usersService.deleteUser(user);
+    this.closeForm();
+  }
+
+  private closeForm() {
+    $('#exampleModal').modal('hide');
+    setTimeout(() => {
+      this.usersService.selectedUser = null;
+    }, 500);
+  }
 }
