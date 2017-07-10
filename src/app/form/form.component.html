@@ -1,0 +1,60 @@
+<div class="modal-dialog" role="document" *ngIf="user">
+    <form name="form" (ngSubmit)="f.form.valid && submit()" #f="ngForm" novalidate>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button (click)="closeForm()" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">{{user.id}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+                    <label for="name" class="control-label">Name:</label>
+                    <input [(ngModel)]="user.name" required #name="ngModel" name="name" type="text" class="form-control" id="name">
+                    <div *ngIf="f.submitted && !name.valid" class="help-block">"This field is required" (you can't leave this field blank)</div>
+                </div>
+
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                    <label for="password" class="control-label">Password:</label>
+                    <input [(ngModel)]="user.password" required #password="ngModel" name="password" type="text" class="form-control" id="password">
+                    <div *ngIf="f.submitted && !password.valid" class="help-block">"This field is required" (you can't leave this field blank)</div>
+                </div>
+
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !profession.valid }">
+                    <label for="profession" class="control-label">Profession:</label>
+                    <input [(ngModel)]="user.profession" required #profession="ngModel" name="profession" type="text" class="form-control" id="profession">
+                    <div *ngIf="f.submitted && !profession.valid" class="help-block">"This field is required" (you can't leave this field blank)</div>
+                </div>
+
+                <div class="has-success">
+                    <div class="checkbox">
+                        <label>
+                            <input [(ngModel)]="user.deletable" #deletable="ngModel" name="deletable" type="checkbox" id="deletable">
+                            deletable
+                        </label>
+                    </div>
+                </div>
+
+                <div class="has-success">
+                    <div class="checkbox">
+                        <label>
+                            <input [(ngModel)]="user.editable" #editable="ngModel" name="editable" type="checkbox" id="deletable">
+                            editable
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button (click)="closeForm()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+
+    <!--<form method="post" (ngSubmit)="userForm.form.valid && submit()" #userForm="ngForm" novalidate>-->
+    <!--<h2>{{blockName}}</h2>-->
+    <!--<label for="nameGood">Название товара*</label>-->
+    <!--<input type="text" id="nameGood" name="nameGood" class="form-control" required [(ngModel)]="name" #nameGood="ngModel">-->
+
+    <!--<button type="submit" [disabled]="loading" class="btn btn-info">qwe</button>-->
+    <!--</form>-->
+</div>
